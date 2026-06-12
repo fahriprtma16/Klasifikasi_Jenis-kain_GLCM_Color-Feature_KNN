@@ -55,11 +55,6 @@ dataset/
 └── Wool/
 ```
 
-Atau salin otomatis dari dataset lama:
-
-```bash
-python prepare_dataset.py --source "C:\Users\Fakhri\Downloads\klasifikasi_jenis_kain_glcm_knn\klasifikasi_jenis_kain_glcm_knn\dataset"
-```
 
 ### 3. Training dan Evaluasi
 
