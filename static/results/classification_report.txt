@@ -1,0 +1,26 @@
+Klasifikasi Jenis Kain 5 Kelas Menggunakan Fitur GLCM dan Color Feature dengan Algoritma KNN
+================================================================================
+Metode: GLCM + Color + KNN
+Kelas target: ['Cotton', 'Denim', 'Nylon', 'Silk', 'Wool']
+Total data: 1000
+Data train: 600
+Data test: 400
+Jumlah data per kelas: {np.str_('Cotton'): 200, np.str_('Denim'): 200, np.str_('Nylon'): 200, np.str_('Silk'): 200, np.str_('Wool'): 200}
+Best params: {'knn__metric': 'manhattan', 'knn__n_neighbors': 3, 'knn__weights': 'distance'}
+Best CV F1: 0.8945
+Accuracy: 0.9125
+Macro Precision: 0.9163
+Macro Recall: 0.9125
+Macro F1-score: 0.9127
+
+              precision    recall  f1-score   support
+
+      Cotton       0.89      0.90      0.89        80
+       Denim       0.84      0.97      0.90        80
+       Nylon       0.95      0.94      0.94        80
+        Silk       0.96      0.89      0.92        80
+        Wool       0.95      0.86      0.90        80
+
+    accuracy                           0.91       400
+   macro avg       0.92      0.91      0.91       400
+weighted avg       0.92      0.91      0.91       400

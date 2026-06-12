@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Metode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="brand">KainClassify</div>
+        <a href="/">Home</a>
+        <a href="/info">Info Metode</a>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h1>Info Metode</h1>
+            <h2>GLCM</h2>
+            <p>GLCM digunakan untuk membaca pola tekstur pada gambar grayscale. Pada sistem ini, fitur yang digunakan adalah contrast, dissimilarity, homogeneity, energy, correlation, dan ASM.</p>
+
+            <h2>KNN</h2>
+            <p>KNN mengklasifikasikan gambar baru berdasarkan kedekatan fitur GLCM gambar tersebut dengan fitur gambar pada data latih.</p>
+
+            <h2>Alur Sistem</h2>
+            <ol>
+                <li>Dataset kain dimasukkan ke folder dataset berdasarkan jenis kain.</li>
+                <li>Gambar diubah menjadi grayscale dan di-resize.</li>
+                <li>Fitur tekstur GLCM diekstraksi.</li>
+                <li>Fitur distandarisasi menggunakan StandardScaler.</li>
+                <li>Model KNN dilatih dan dievaluasi.</li>
+                <li>User upload gambar kain untuk diprediksi.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>

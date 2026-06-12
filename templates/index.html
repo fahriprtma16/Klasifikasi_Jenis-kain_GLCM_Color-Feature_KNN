@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Jenis Kain - GLCM + KNN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="brand">KainClassify</div>
+        <a href="/">Home</a>
+        <a href="/info">Info Metode</a>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Klasifikasi Jenis Kain Menggunakan Fitur Tekstur GLCM, Color Feature, dan Algoritma K-Nearest Neighbor (KNN)</h1>
+            <p>Upload gambar tekstur kain, lalu sistem akan mengekstraksi fitur GLCM dan mengklasifikasikan jenis kain menggunakan KNN.</p>
+        </section>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}<p>{{ message }}</p>{% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="card">
+            <h2>Uji Gambar Kain</h2>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <button type="submit">Prediksi Jenis Kain</button>
+            </form>
+        </section>
+
+        <section class="grid">
+            <div class="card small">
+                <h3>Kelas Dataset</h3>
+                {% if classes %}
+                    <p>{{ classes|join(', ') }}</p>
+                {% else %}
+                    <p>Belum ada model. Jalankan training terlebih dahulu.</p>
+                {% endif %}
+            </div>
+            <div class="card small">
+                <h3>Accuracy</h3>
+                {% if accuracy is not none %}
+                    <p>{{ '%.2f'|format(accuracy * 100) }}%</p>
+                {% else %}
+                    <p>-</p>
+                {% endif %}
+            </div>
+            <div class="card small">
+                <h3>Nilai K</h3>
+                <p>{{ k_value if k_value else '-' }}</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

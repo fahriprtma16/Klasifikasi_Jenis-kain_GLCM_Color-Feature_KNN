@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Klasifikasi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="brand">KainClassify</div>
+        <a href="/">Home</a>
+        <a href="/info">Info Metode</a>
+    </nav>
+
+    <main class="container">
+        <section class="card result">
+            <h1>Hasil Prediksi</h1>
+            <img class="preview" src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Gambar kain">
+            <h2>Jenis kain terprediksi: <span>{{ prediction }}</span></h2>
+
+            {% if top_predictions %}
+                <h3>Top Prediksi</h3>
+                <table>
+                    <thead><tr><th>Kelas</th><th>Probabilitas</th></tr></thead>
+                    <tbody>
+                        {% for item in top_predictions %}
+                        <tr><td>{{ item.label }}</td><td>{{ item.probability }}%</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </section>
+
+        <section class="card">
+            <h3>Fitur GLCM Gambar Uji</h3>
+            <table>
+                <thead><tr><th>Fitur</th><th>Nilai</th></tr></thead>
+                <tbody>
+                    {% for feature in feature_data %}
+                    <tr><td>{{ feature.name }}</td><td>{{ feature.value }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="button-link" href="/">Uji gambar lain</a>
+        </section>
+    </main>
+</body>
+</html>

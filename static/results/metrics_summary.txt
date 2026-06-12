@@ -1,0 +1,5 @@
+Accuracy=0.9125
+Macro Precision=0.9163
+Macro Recall=0.9125
+Macro F1-score=0.9127
+Best Params={'knn__metric': 'manhattan', 'knn__n_neighbors': 3, 'knn__weights': 'distance'}
